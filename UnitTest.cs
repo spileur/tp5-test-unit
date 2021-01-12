@@ -358,6 +358,7 @@ namespace ParseMyCSV
 
         private readonly string STUDENTS_FILE = Global.PATH_TESTS_FILES + "StudentsList";
         private readonly string UPDATE_FILE = Global.PATH_TESTS_FILES + "UpdateFile";
+        private readonly string EMPTY_FILE = Global.PATH_TESTS_FILES + "EmptyFile";
 
         private Dictionary<string, Student> _execUpdate()
         {
@@ -410,6 +411,14 @@ namespace ParseMyCSV
         {
             Assert.IsFalse(_execUpdate().ContainsKey("Ron Weasley"),
                 "Ron Weasley wasn't removed");
+        }
+        
+        [Test]
+        public void Empty_File()
+        {
+            Dictionary<string, Student> students = CreateStudentsInfoFromFormat(STUDENTS_FILE);
+            Update(students, EMPTY_FILE);
+            Assert.IsTrue(students.ContainsKey("Ron Weasley"));
         }
 
     }
