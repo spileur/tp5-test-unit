@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Runtime.CompilerServices;
+using Microsoft.VisualStudio.TestPlatform.Utilities;
 using NUnit.Framework;
 using static  ParseMyCSV.ParseMyCSV;
 
@@ -59,25 +60,40 @@ namespace ParseMyCSV
         [Test]
         public void Harry_Potter()
         {
-            Assert.AreEqual(new Student("Harry Potter", (Houses) 1, 0), 
-                CreateStudentsInfoFromFormat(TEST_FILE)["Harry Potter"],
-                "Harry Potter isn't present in the Dictionary or doesn't have the right attributes");
+            Student student = new Student("Harry Potter", (Houses) 1, 0);
+            Student other = CreateStudentsInfoFromFormat(TEST_FILE)["Harry Potter"];
+            Assert.IsTrue(student.Name.Equals(other.Name),
+                "Harry Potter doesn't have the right attributes");
+            Assert.IsTrue(student.Points.Equals(other.Points),
+                "Harry Potter doesn't have the right attributes");
+            Assert.IsTrue(student.Houses.Equals(other.Houses),
+                "Harry Potter doesn't have the right attributes");
         }
         
         [Test]
         public void Ernie_Macmillan()
         {
-            Assert.AreEqual(new Student("Ernie Macmillan", (Houses) 2, 0), 
-                CreateStudentsInfoFromFormat(TEST_FILE)["Ernie Macmillan"],
-                "Ernie Macmillan isn't present in the Dictionary or doesn't have the right attributes");
+            Student student = new Student("Ernie Macmillan", (Houses) 2, 0);
+            Student other = CreateStudentsInfoFromFormat(TEST_FILE)["Ernie Macmillan"];
+            Assert.IsTrue(student.Name.Equals(other.Name),
+                "Ernie Macmillan doesn't have the right attributes");
+            Assert.IsTrue(student.Points.Equals(other.Points),
+                "Ernie Macmillan doesn't have the right attributes");
+            Assert.IsTrue(student.Houses.Equals(other.Houses),
+                "Ernie Macmillan doesn't have the right attributes");
         }
         
         [Test]
         public void Draco_Malfoy()
         {
-            Student student = CreateStudentsInfoFromFormat(TEST_FILE)["Draco Malfoy"];
-            Assert.NotNull(student, "Draco Malfoy isn't present in the Dictionary");
-            Assert.AreNotEqual(Houses.None, student.Houses, "Draco Malfoy doesn't have house");
+            Student student = new Student("Draco Malfoy", (Houses) 4, 0);
+            Student other = CreateStudentsInfoFromFormat(TEST_FILE)["Draco Malfoy"];
+            Assert.IsTrue(student.Name.Equals(other.Name),
+                "Draco Malfoy doesn't have the right attributes");
+            Assert.IsTrue(student.Points.Equals(other.Points),
+                "Draco Malfoy doesn't have the right attributes");
+            Assert.IsTrue(student.Houses.Equals(other.Houses),
+                "Draco Malfoy doesn't have the right attributes");
         }
         
         [Test]
@@ -117,25 +133,40 @@ namespace ParseMyCSV
         [Test]
         public void Harry_Potter()
         {
-            Assert.AreEqual(new Student("Harry Potter", (Houses) 1, 0), 
-                _createDictionary()["Harry Potter"],
-                "Harry Potter isn't present in the Dictionary or doesn't have the right attributes");
+            Student student = new Student("Harry Potter", (Houses) 1, 0);
+            Student other = _createDictionary()["Harry Potter"];
+            Assert.IsTrue(student.Name.Equals(other.Name),
+                "Harry Potter doesn't have the right attributes");
+            Assert.IsTrue(student.Points.Equals(other.Points),
+                "Harry Potter doesn't have the right attributes");
+            Assert.IsTrue(student.Houses.Equals(other.Houses),
+                "Harry Potter doesn't have the right attributes");
         }
         
         [Test]
         public void Ernie_Macmillan()
         {
-            Assert.AreEqual(new Student("Ernie Macmillan", (Houses) 2, 0), 
-                _createDictionary()["Ernie Macmillan"],
-                "Ernie Macmillan isn't present in the Dictionary or doesn't have the right attributes");
+            Student student = new Student("Ernie Macmillan", (Houses) 2, 0);
+            Student other = _createDictionary()["Ernie Macmillan"];
+            Assert.IsTrue(student.Name.Equals(other.Name),
+                "Ernie Macmillan doesn't have the right attributes");
+            Assert.IsTrue(student.Points.Equals(other.Points),
+                "Ernie Macmillan doesn't have the right attributes");
+            Assert.IsTrue(student.Houses.Equals(other.Houses),
+                "Ernie Macmillan doesn't have the right attributes");
         }
         
         [Test]
         public void Draco_Malfoy()
         {
-            Student student = _createDictionary()["Draco Malfoy"];
-            Assert.NotNull(student, "Draco Malfoy isn't present in the Dictionary");
-            Assert.AreNotEqual(Houses.None, student.Houses, "Draco Malfoy doesn't have house");
+            Student student = new Student("Draco Malfoy", (Houses) 4, 0);
+            Student other = _createDictionary()["Draco Malfoy"];
+            Assert.IsTrue(student.Name.Equals(other.Name),
+                "Draco Malfoy doesn't have the right attributes");
+            Assert.IsTrue(student.Points.Equals(other.Points),
+                "Draco Malfoy doesn't have the right attributes");
+            Assert.IsTrue(student.Houses.Equals(other.Houses),
+                "Draco Malfoy doesn't have the right attributes");
         }
         
     }
@@ -157,8 +188,9 @@ namespace ParseMyCSV
         {
             Dictionary<string, Student> students = _createDictionary();
             AddPoints(students, "Harry Potter", 100);
-            Assert.AreEqual(new Student("Harry Potter", (Houses) 1, 100),
-                students["Harry Potter"],
+            
+            Assert.AreEqual(100,
+                students["Harry Potter"].Points,
                 "Harry Potter doesn't have the right points");
         }
         
@@ -168,8 +200,8 @@ namespace ParseMyCSV
             Dictionary<string, Student> students = _createDictionary();
             AddPoints(students, "Ernie Macmillan", 950);
             AddPoints(students, "Ernie Macmillan", 50);
-            Assert.AreEqual(new Student("Ernie Macmillan", (Houses) 2, 1000),
-                students["Ernie Macmillan"],
+            Assert.AreEqual(1000,
+                students["Ernie Macmillan"].Points,
                 "Ernie Macmillan doesn't have the right points");
         }
         
@@ -238,6 +270,7 @@ namespace ParseMyCSV
             using var output = new ConsoleTest.ConsoleOutput();
             Dictionary<string, Student> students = _createDictionary();
             AddPoints(students, "Harry Potter", 999);
+            WinnerOfTheHouseCup(students);
             Assert.AreEqual("Winner of the House Cup is : Gryffindor" + Environment.NewLine, output.GetOutput(),
                 "The console doesn't display the correct winner");
         }
@@ -248,6 +281,7 @@ namespace ParseMyCSV
             using var output = new ConsoleTest.ConsoleOutput();
             Dictionary<string, Student> students = _createDictionary();
             AddPoints(students, "Ernie Macmillan", 13);
+            WinnerOfTheHouseCup(students);
             Assert.AreEqual("Winner of the House Cup is : Gryffindor" + Environment.NewLine, output.GetOutput(),
                 "The console doesn't display the correct winner");
         }
@@ -258,18 +292,9 @@ namespace ParseMyCSV
             using var output = new ConsoleTest.ConsoleOutput();
             Dictionary<string, Student> students = _createDictionary();
             AddPoints(students, "Ernie Macmillan", 750);
+            WinnerOfTheHouseCup(students);
             Assert.AreEqual("Winner of the House Cup is : Hufflepuff" + Environment.NewLine, output.GetOutput(),
                 "The console doesn't display the correct winner");
-        }
-
-        public void Save_File()
-        {
-            using var output = new ConsoleTest.ConsoleOutput();
-            Dictionary<string, Student> students = _createDictionary();
-            GivePoints(students);
-            Assert.AreEqual("Winner of the House Cup is : Gryffindor" + Environment.NewLine, output.GetOutput(),
-                "The console doesn't display the correct winner");
-            //TODO Check file
         }
 
     }
@@ -344,24 +369,39 @@ namespace ParseMyCSV
         [Test]
         public void Rename_Student()
         {
-            Assert.AreEqual(new Student("Lucius Malfoy", (Houses) 4, 56), 
-                _execUpdate()["Lucius Malfoy"],
+            Student student = new Student("Lucius Malfoy", (Houses) 4, 56);
+            Student other = _execUpdate()["Lucius Malfoy"];
+            Assert.IsTrue(student.Name.Equals(other.Name),
+                "Lucius Malfoy cannot be found");
+            Assert.IsTrue(student.Points.Equals(other.Points),
+                "Lucius Malfoy cannot be found");
+            Assert.IsTrue(student.Houses.Equals(other.Houses),
                 "Lucius Malfoy cannot be found");
         }
         
         [Test]
         public void Change_House()
         {
-            Assert.AreEqual(new Student("Harry Potter", (Houses) 4, 100068), 
-                _execUpdate()["Harry Potter"],
+            Student student = new Student("Harry Potter", (Houses) 4, 100068);
+            Student other = _execUpdate()["Harry Potter"];
+            Assert.IsTrue(student.Name.Equals(other.Name),
+                "Harry Potter has the wrong house");
+            Assert.IsTrue(student.Points.Equals(other.Points),
+                "Harry Potter has the wrong house");
+            Assert.IsTrue(student.Houses.Equals(other.Houses),
                 "Harry Potter has the wrong house");
         }
         
         [Test]
         public void Add_Student()
         {
-            Assert.AreEqual(new Student("Mimi Geignarde", (Houses) 3, 0), 
-                _execUpdate()["Mimi Geignarde"],
+            Student student = new Student("Mimi Geignarde", (Houses) 3, 0);
+            Student other = _execUpdate()["Mimi Geignarde"];
+            Assert.IsTrue(student.Name.Equals(other.Name),
+                "Mimi Geignarde cannot be found");
+            Assert.IsTrue(student.Points.Equals(other.Points),
+                "Mimi Geignarde cannot be found");
+            Assert.IsTrue(student.Houses.Equals(other.Houses),
                 "Mimi Geignarde cannot be found");
         }
         
