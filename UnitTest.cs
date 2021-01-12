@@ -54,7 +54,7 @@ namespace ParseMyCSV
 
         private readonly string TEST_FILE = Global.PATH_TESTS_FILES + "CreateStudentsInfoFromFormatFile";
         private readonly string EMPTY_FILE = Global.PATH_TESTS_FILES + "EmptyFile";
-        private readonly string NOT_FOUND_FILE = Global.PATH_TESTS_FILES + "EmptyFile";
+        private readonly string NOT_FOUND_FILE = Global.PATH_TESTS_FILES + "NotFound";
 
         [Test]
         public void Harry_Potter()
@@ -92,7 +92,7 @@ namespace ParseMyCSV
         {
             using var output = new ConsoleTest.ConsoleOutput();
             CreateStudentsInfoFromFormat(NOT_FOUND_FILE);
-            Assert.AreEqual("Error: \"NotFound\" does not exist" + Environment.NewLine, output.GetOutput(),
+            Assert.AreEqual($"Error: \"{NOT_FOUND_FILE}\" does not exist" + Environment.NewLine, output.GetOutput(),
                 "The console doesn't display the error message");
         }
         
