@@ -338,7 +338,7 @@ namespace ParseMyCSV
                 _saveListOfHouses(CreateStudentsInfoFromFormat(STUDENTS_FILE))[4],
                 "There are no spaces between the houses");
             Assert.AreEqual("", 
-                _saveListOfHouses(CreateStudentsInfoFromFormat(STUDENTS_FILE))[10],
+                _saveListOfHouses(CreateStudentsInfoFromFormat(STUDENTS_FILE))[9],
                 "There are no spaces between the houses");
         }
         
@@ -346,7 +346,7 @@ namespace ParseMyCSV
         public void Ravenclaw()
         {
             Assert.AreEqual("House Ravenclaw :", 
-                _saveListOfHouses(CreateStudentsInfoFromFormat(STUDENTS_FILE))[9],
+                _saveListOfHouses(CreateStudentsInfoFromFormat(STUDENTS_FILE))[8],
                 "House Ravenclaw isn't present in file");
         }
 
