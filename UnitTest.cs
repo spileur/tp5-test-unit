@@ -28,22 +28,22 @@ namespace ParseMyCSV
         [Test]
         public void Harry_Potter()
         {
-            Assert.AreEqual(Houses.Gryffindor, _createStudent("Harry Potter").Houses);
+            Assert.AreEqual(Houses.Gryffindor, _createStudent("Harry Potter").House);
         }
         
         [Test]
         public void Ernie_Macmillan()
         {
-            Assert.AreEqual(Houses.Hufflepuff, _createStudent("Ernie Macmillan").Houses);
+            Assert.AreEqual(Houses.Hufflepuff, _createStudent("Ernie Macmillan").House);
         }
         
         [Test]
         public void Baron_Sanglant()
         {
-            Houses houses = _createStudent("Baron Sanglant").Houses;
+            Houses houses = _createStudent("Baron Sanglant").House;
             Assert.AreNotEqual(Houses.None, houses, "the student doesn't have a house");
             int i = 30;
-            while (i > 0 && houses == _createStudent("Baron Sanglant").Houses)
+            while (i > 0 && houses == _createStudent("Baron Sanglant").House)
                 i--;
             Assert.AreNotEqual(0, i, "the student always has the same house");
         }
@@ -66,7 +66,7 @@ namespace ParseMyCSV
                 "Harry Potter doesn't have the right attributes");
             Assert.IsTrue(student.Points.Equals(other.Points),
                 "Harry Potter doesn't have the right attributes");
-            Assert.IsTrue(student.Houses.Equals(other.Houses),
+            Assert.IsTrue(student.House.Equals(other.House),
                 "Harry Potter doesn't have the right attributes");
         }
         
@@ -79,7 +79,7 @@ namespace ParseMyCSV
                 "Ernie Macmillan doesn't have the right attributes");
             Assert.IsTrue(student.Points.Equals(other.Points),
                 "Ernie Macmillan doesn't have the right attributes");
-            Assert.IsTrue(student.Houses.Equals(other.Houses),
+            Assert.IsTrue(student.House.Equals(other.House),
                 "Ernie Macmillan doesn't have the right attributes");
         }
         
@@ -92,7 +92,7 @@ namespace ParseMyCSV
                 "Draco Malfoy doesn't have the right attributes");
             Assert.IsTrue(student.Points.Equals(other.Points),
                 "Draco Malfoy doesn't have the right attributes");
-            Assert.IsTrue(student.Houses.Equals(other.Houses),
+            Assert.IsTrue(student.House.Equals(other.House),
                 "Draco Malfoy doesn't have the right attributes");
         }
         
@@ -139,7 +139,7 @@ namespace ParseMyCSV
                 "Harry Potter doesn't have the right attributes");
             Assert.IsTrue(student.Points.Equals(other.Points),
                 "Harry Potter doesn't have the right attributes");
-            Assert.IsTrue(student.Houses.Equals(other.Houses),
+            Assert.IsTrue(student.House.Equals(other.House),
                 "Harry Potter doesn't have the right attributes");
         }
         
@@ -152,7 +152,7 @@ namespace ParseMyCSV
                 "Ernie Macmillan doesn't have the right attributes");
             Assert.IsTrue(student.Points.Equals(other.Points),
                 "Ernie Macmillan doesn't have the right attributes");
-            Assert.IsTrue(student.Houses.Equals(other.Houses),
+            Assert.IsTrue(student.House.Equals(other.House),
                 "Ernie Macmillan doesn't have the right attributes");
         }
         
@@ -165,7 +165,7 @@ namespace ParseMyCSV
                 "Draco Malfoy doesn't have the right attributes");
             Assert.IsTrue(student.Points.Equals(other.Points),
                 "Draco Malfoy doesn't have the right attributes");
-            Assert.IsTrue(student.Houses.Equals(other.Houses),
+            Assert.IsTrue(student.House.Equals(other.House),
                 "Draco Malfoy doesn't have the right attributes");
         }
         
@@ -376,7 +376,7 @@ namespace ParseMyCSV
                 "Lucius Malfoy cannot be found");
             Assert.IsTrue(student.Points.Equals(other.Points),
                 "Lucius Malfoy cannot be found");
-            Assert.IsTrue(student.Houses.Equals(other.Houses),
+            Assert.IsTrue(student.House.Equals(other.House),
                 "Lucius Malfoy cannot be found");
         }
         
@@ -389,7 +389,7 @@ namespace ParseMyCSV
                 "Harry Potter has the wrong house");
             Assert.IsTrue(student.Points.Equals(other.Points),
                 "Harry Potter has the wrong house");
-            Assert.IsTrue(student.Houses.Equals(other.Houses),
+            Assert.IsTrue(student.House.Equals(other.House),
                 "Harry Potter has the wrong house");
         }
         
@@ -402,7 +402,7 @@ namespace ParseMyCSV
                 "Mimi Geignarde cannot be found");
             Assert.IsTrue(student.Points.Equals(other.Points),
                 "Mimi Geignarde cannot be found");
-            Assert.IsTrue(student.Houses.Equals(other.Houses),
+            Assert.IsTrue(student.House.Equals(other.House),
                 "Mimi Geignarde cannot be found");
         }
         
