@@ -106,9 +106,9 @@ namespace ParseMyCSV
         [Test]
         public void Not_Found_File()
         {
-            using var output = new ConsoleTest.ConsoleOutput();
+            using var output = new ConsoleTest.ConsoleError();
             CreateStudentsInfoFromFormat(NOT_FOUND_FILE);
-            Assert.AreEqual($"Error: \"{NOT_FOUND_FILE}\" does not exist" + Environment.NewLine, output.GetOutput(),
+            Assert.AreEqual($"Error: \"{NOT_FOUND_FILE}\" does not exist" + Environment.NewLine, output.GetError(),
                 "The console doesn't display the error message");
         }
         
@@ -208,10 +208,10 @@ namespace ParseMyCSV
         [Test]
         public void NotAStudent()
         {
-            using var output = new ConsoleTest.ConsoleOutput();
+            using var output = new ConsoleTest.ConsoleError();
             Dictionary<string, Student> students = _createDictionary();
             AddPoints(students, "NotAStudent", 9000);
-            Assert.AreEqual("Error: \"NotAStudent\" does not exist" + Environment.NewLine, output.GetOutput(),
+            Assert.AreEqual("Error: \"NotAStudent\" does not exist" + Environment.NewLine, output.GetError(),
                 "The console doesn't display the error message");
         }
         
