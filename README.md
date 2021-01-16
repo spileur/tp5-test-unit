@@ -2,8 +2,9 @@
 
  - **Télécharger** la dernière version du projet avec [ce lien](https://github.com/spileur/tp5-test-unit/archive/main.zip)
 - **Ajoutez** l'archive comme ci-dessous à votre projet en **renommant** le dossier en `TestParseMyCSV` ![Tree Project TP5 with TestParseMyCSV](https://i.imgur.com/gQxCTVq.png)
-- Ouvrez **Rider** avec votre projet TP5 puis `Clic Droit` sur TP5 > `Add` > `Add Existing Project...`et allez dans le dossier `TestParseMyCSV`puis ouvrez le fichier `TestParseMyCSV.csproj`
+- Ouvrez **Rider** avec votre projet TP5 puis `Clic Droit` sur TP5 > `Add` > `Add Existing Project...`et allez dans le dossier `TestParseMyCSV` puis ouvrez le fichier `TestParseMyCSV.csproj`
 ![Rider Add Existing Project](https://i.imgur.com/aqIDTa6.png)
+- Dans le fichier `ParseMyCSV.cs` de votre tp vous devez mettre un `public` devant `class PrarseMyCSV {`
 - *Voilà vous avez fini l'installation :'D*
 # Utilisation Unit Tests
 - Vous avez accès aux Tests Unitaire en bas en cliquant sur `Unit Tests`
